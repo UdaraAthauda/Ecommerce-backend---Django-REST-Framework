@@ -7,7 +7,7 @@ from .models import *
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ['url', 'id', 'name', 'slug']
+        fields = ['url', 'id', 'name', 'slug',]
 
 
 # product model serializer
@@ -20,7 +20,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['url', 'id', 'name', 'slug', 'description', 'price', 'inventory', 'is_active', 'category']
+        fields = ['url', 'id', 'name', 'slug', 'description', 'price', 'inventory', 'is_active', 'category',]
 
 
 # customer model serializer
@@ -30,7 +30,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Customer
-        fields = ['url', 'id', 'user', 'phone', 'address', 'joined_at']
+        fields = ['url', 'id', 'user', 'phone', 'address', 'joined_at',]
 
 
 # order item model serializer
@@ -43,7 +43,7 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ['url', 'id', 'product', 'quantity', 'price']
+        fields = ['url', 'id', 'product', 'quantity', 'price',]
 
 
 # order model serializer
@@ -57,5 +57,5 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['url', 'id', 'customer', 'created_at', 'status', 'total_price', 'items']
+        fields = ['url', 'id', 'customer', 'created_at', 'status', 'total_price', 'items',]
 
