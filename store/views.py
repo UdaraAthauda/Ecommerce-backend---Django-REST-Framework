@@ -12,8 +12,8 @@ class CategoryView(viewsets.ModelViewSet):
     
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
-            return [AllowAny()]
-        return [IsAdminUser()]
+            return [AllowAny(), IsAuthenticated()]
+        return [IsAdminUser(), IsAuthenticated()]
 
 
 class ProductView(viewsets.ModelViewSet):
