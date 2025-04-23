@@ -6,6 +6,8 @@ from .serializers import *
 
 # Create your views here.
 
+# category model viewset
+
 class CategoryView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -15,6 +17,7 @@ class CategoryView(viewsets.ModelViewSet):
             return [AllowAny(), IsAuthenticated()]
         return [IsAdminUser(), IsAuthenticated()]
 
+# product model viewset
 
 class ProductView(viewsets.ModelViewSet):
     queryset = Product.objects.all()
@@ -24,3 +27,13 @@ class ProductView(viewsets.ModelViewSet):
         if self.request.method in SAFE_METHODS:
             return [AllowAny()]
         return [IsAdminUser()]
+
+# customer model viewset
+
+class CustomerView(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

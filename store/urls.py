@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('categories', views.CategoryView)
 router.register('products', views.ProductView)
+router.register('customers', views.CustomerView)
 
 
 urlpatterns = [

@@ -7,7 +7,8 @@ from .models import *
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ['url', 'id', 'name', 'slug',]
+        #fields = ['url', 'id', 'name', 'slug',]
+        fields = '__all__'
 
 
 # product model serializer
@@ -20,7 +21,9 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['url', 'id', 'name', 'slug', 'description', 'price', 'inventory', 'is_active', 'category',]
+        #fields = ['url', 'id', 'name', 'slug', 'description', 'price', 'inventory', 'is_active', 'category',]
+        fields = '__all__'
+
 
 
 # customer model serializer
