@@ -62,3 +62,15 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
         model = Order
         fields = ['url', 'id', 'customer', 'created_at', 'status', 'total_price', 'items',]
 
+    def create(self, validated_data):
+        order_items_data = validated_data.pop('order_items')  # extract items
+        customer = Customer.objects.get(user=self.context['request'].user)  # get logged-in customer
+
+        # Create the order
+        order = Order.objects.create(customer=customer, **validated_data)
+
+        # Create each item
+        for item in order_items_data:
+            OrderItem.objects.create(order=order, **item)
+
+        return order
